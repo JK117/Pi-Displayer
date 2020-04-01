@@ -9,6 +9,7 @@ verify_ssl = true
 luma-core = "*"
 luma-oled = "*"
 luma = "*"
+pusherclient = "*"
 
 [requires]
 python_version = "3.7"
