@@ -8,11 +8,10 @@ import time
 # serial = i2c(port=1, address=0x3C)
 serial = spi(device=0, port=0, cs_high=True)
 
-# substitute ssd1331(...) or sh1106(...) below if using that device
-# 这里改ssd1306, ssd1325, ssd1331, sh1106
+# substitute with ssd1306, ssd1325, ssd1331, sh1106
 device = sh1106(serial)
 
 with canvas(device) as draw:
     draw.rectangle(device.bounding_box, fill="black", outline="white")
-    draw.text((30, 40), "Hello World", fill="white")
-time.sleep(10)
+    draw.text((30, 40), "Raspberry Pi Start Up", fill="white")
+time.sleep(15)
