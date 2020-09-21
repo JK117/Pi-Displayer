@@ -82,7 +82,7 @@ signal.signal(signal.SIGINT, handler)
 
 if __name__ == "__main__":
     try:
-        serial = spi(device=0, port=0)
+        serial = spi(device=0, port=0, cs_high=True)
         device = sh1106(serial)
         main()
     except KeyboardInterrupt:
