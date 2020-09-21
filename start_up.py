@@ -13,5 +13,6 @@ device = sh1106(serial)
 
 with canvas(device) as draw:
     draw.rectangle(device.bounding_box, fill="black", outline="white")
-    draw.text((30, 40), "Raspberry Pi Start Up", fill="white")
+    draw.text((10, 10), "Raspberry Pi", fill="white")
+    draw.text((10, 30), "Start Up Completed", fill="white")
 time.sleep(15)
