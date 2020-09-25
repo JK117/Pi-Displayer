@@ -14,3 +14,4 @@ def get_cpu_use():
 
 if __name__ == '__main__':
     print('CPU Temperature = ' + get_cpu_temperature())
+    print(get_cpu_use())
