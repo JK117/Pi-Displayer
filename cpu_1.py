@@ -17,4 +17,4 @@ if __name__ == '__main__':
     print('CPU Temperature = ' + get_cpu_temperature())
     for i in range(10):
         time.sleep(1)
-        print('\r' + get_cpu_use())
+        print('CPU Usage = ' + get_cpu_use(), end='\r')
