@@ -102,9 +102,9 @@ def get_disk_usage():
 
 if __name__ == '__main__':
     print("SYSTEM STATUS")
-    get_cpu_temp()
-    get_cpu_usage()
+    print(get_cpu_temp())
+    print(get_cpu_usage())
     print('\n')
-    get_ram_info()
+    print(get_ram_info())
     print('\n')
-    get_disk_usage()
+    print(get_disk_usage())
