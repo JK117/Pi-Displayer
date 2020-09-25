@@ -6,7 +6,7 @@ import time
 def get_cpu_temp():
     res = os.popen('vcgencmd measure_temp').readline()
     cpu_temp = res.replace("temp=", "").replace("'C\n", "")
-    return 'CPU Temperature: ' + cpu_temp
+    return "CPU Temperature: " + cpu_temp + "'C"
 
 
 # def get_cpu_temp():
@@ -23,7 +23,7 @@ def get_cpu_temp():
 # Return % of CPU used by user as a character string
 def get_cpu_usage():
     cpu_usage = str(os.popen("top -n1 | awk '/Cpu\(s\):/ {print $2}'").readline().strip())
-    return 'CPU Usage: ' + cpu_usage
+    return 'CPU Usage: ' + cpu_usage + '%'
 
 
 # Return RAM information (unit=kb) in a list
@@ -46,7 +46,7 @@ def get_ram_info():
     ram_free = round(int(res[2]) / 1000, 1)
     return 'RAM Total: ' + str(ram_total) + ' MB\n' \
            + 'RAM Used: ' + str(ram_used) + ' MB\n' \
-           + 'RAM Free: ' + str(ram_free) + ' MB\n'
+           + 'RAM Free: ' + str(ram_free) + ' MB'
 
 
 # Return information about disk space as a list (unit included)
