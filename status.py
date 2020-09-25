@@ -7,6 +7,16 @@ def get_cpu_temperature():
     return res.replace("temp=", "").replace("'C\n", "")
 
 
+# def get_cpu_temperature():
+#     return os.popen('/opt/vc/bin/vcgencmd measure_temp').read()[5:9]
+#
+#
+# def get_cpu_temperature():
+#     with open("/sys/class/thermal/thermal_zone0/temp") as tempFile:
+#         res = tempFile.read()
+#         res = str(float(res)/1000)
+#     return res
+
 # Return RAM information (unit=kb) in a list
 # Index 0: total RAM
 # Index 1: used RAM
