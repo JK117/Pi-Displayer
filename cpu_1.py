@@ -1,4 +1,5 @@
 import os
+import time
 
 
 # Return CPU temperature as a character string
@@ -14,4 +15,6 @@ def get_cpu_use():
 
 if __name__ == '__main__':
     print('CPU Temperature = ' + get_cpu_temperature())
-    print(get_cpu_use())
+    for i in range(10):
+        time.sleep(1)
+        print('\r' + get_cpu_use())
