@@ -21,10 +21,10 @@ def main():
         # disk_usage = status.get_disk_info()
         with canvas(device) as draw:
             draw.rectangle(device.bounding_box, fill="black", outline="white")
-            draw.text((4, 10), "CPU Temperature: ", fill="white")
-            draw.text((8, 10), cpu_temp + "'C", fill="white")
-            draw.text((12, 30), "CPU Usage: ", fill="white")
-            draw.text((16, 30), cpu_usage + "%", fill="white")
+            draw.text((10, 5), "CPU Temperature: ", fill="white")
+            draw.text((10, 10), cpu_temp + "'C", fill="white")
+            draw.text((10, 15), "CPU Usage: ", fill="white")
+            draw.text((10, 20), cpu_usage + "%", fill="white")
         time.sleep(1)
 
 

@@ -43,13 +43,13 @@ def get_ram_info():
             break
 
     # Outputs are in KB
-    ram_total = str(round(int(ram_list[0]) / 1000, 1))
-    ram_used = str(round(int(ram_list[1]) / 1000, 1))
-    ram_free = str(round(int(ram_list[2]) / 1000, 1))
-    return 'RAM Total: ' + str(ram_total) + ' MB\n' \
-           + 'RAM Used: ' + str(ram_used) + ' MB\n' \
-           + 'RAM Free: ' + str(ram_free) + ' MB'
-    # return ram_list
+    # ram_total = str(round(int(ram_list[0]) / 1000, 1))
+    # ram_used = str(round(int(ram_list[1]) / 1000, 1))
+    # ram_free = str(round(int(ram_list[2]) / 1000, 1))
+    # return 'RAM Total: ' + str(ram_total) + ' MB\n' \
+    #        + 'RAM Used: ' + str(ram_used) + ' MB\n' \
+    #        + 'RAM Free: ' + str(ram_free) + ' MB'
+    return ram_list
 
 
 # Return information about disk space as a list (unit included)
@@ -83,14 +83,13 @@ if __name__ == '__main__':
     print("CPU Usage: ")
     print(get_cpu_usage() + " %")
 
-    print(get_ram_info())
-    # ram_info = get_ram_info()
-    # ram_total = str(round(int(ram_info[0]) / 1024, 1))
-    # ram_used = str(round(int(ram_info[1]) / 1024, 1))
-    # ram_free = str(round(int(ram_info[2]) / 1024, 1))
-    # print('RAM Total: ' + ram_total + ' MB')
-    # print('RAM Used: ' + ram_used + ' MB')
-    # print('RAM Free: ' + ram_free + ' MB')
+    ram_info = get_ram_info()
+    ram_total = str(round(int(ram_info[0]) / 1024, 1))
+    ram_used = str(round(int(ram_info[1]) / 1024, 1))
+    ram_free = str(round(int(ram_info[2]) / 1024, 1))
+    print('RAM Total: ' + ram_total + ' MB')
+    print('RAM Used: ' + ram_used + ' MB')
+    print('RAM Free: ' + ram_free + ' MB')
 
     disk_info = get_disk_info()
     disk_total = disk_info[0]
