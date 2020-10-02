@@ -1,12 +1,12 @@
 import os
-import time
 
 
 # Return CPU temperature as a character string
 def get_cpu_temp():
     res = os.popen('vcgencmd measure_temp').readline()
     cpu_temp = res.replace("temp=", "").replace("'C\n", "")
-    return "CPU Temperature: " + cpu_temp + "'C"
+    # return "CPU Temperature: " + cpu_temp + "'C"
+    return cpu_temp
 
 
 # def get_cpu_temp():
@@ -23,7 +23,8 @@ def get_cpu_temp():
 # Return % of CPU used by user as a character string
 def get_cpu_usage():
     cpu_usage = str(os.popen("top -n1 | awk '/Cpu\(s\):/ {print $2}'").readline().strip())
-    return 'CPU Usage: ' + cpu_usage + '%'
+    # return 'CPU Usage: ' + cpu_usage + '%'
+    return cpu_usage
 
 
 # Return RAM information (unit=kb) in a list
@@ -33,20 +34,22 @@ def get_cpu_usage():
 def get_ram_info():
     p = os.popen('free')
     counter = 0
-    res = []
+    ram_list = []
     while 1:
         counter = counter + 1
         line = p.readline()
         if counter == 2:
-            res += line.split()[1:4]
+            ram_list += line.split()[1:4]
             break
-    # Output is in kb, convert it in Mb for readability
-    ram_total = round(int(res[0]) / 1000, 1)
-    ram_used = round(int(res[1]) / 1000, 1)
-    ram_free = round(int(res[2]) / 1000, 1)
-    return 'RAM Total: ' + str(ram_total) + ' MB\n' \
-           + 'RAM Used: ' + str(ram_used) + ' MB\n' \
-           + 'RAM Free: ' + str(ram_free) + ' MB'
+
+    # Outputs are in KB
+    # ram_total = str(round(int(ram_list[0]) / 1000, 1))
+    # ram_used = str(round(int(ram_list[1]) / 1000, 1))
+    # ram_free = str(round(int(ram_list[2]) / 1000, 1))
+    # return 'RAM Total: ' + str(ram_total) + ' MB\n' \
+    #        + 'RAM Used: ' + str(ram_used) + ' MB\n' \
+    #        + 'RAM Free: ' + str(ram_free) + ' MB'
+    return ram_list
 
 
 # Return information about disk space as a list (unit included)
@@ -54,57 +57,46 @@ def get_ram_info():
 # Index 1: used disk space
 # Index 2: remaining disk space
 # Index 3: percentage of disk used
-def get_disk_usage():
+def get_disk_info():
     p = os.popen("df -h /")
     counter = 0
-    res = []
+    disk_list = []
     while 1:
         counter = counter + 1
         line = p.readline()
         if counter == 2:
-            res += line.split()[1:5]
+            disk_list += line.split()[1:5]
             break
 
-    return 'DISK Total Space: ' + str(res[0]) + 'B\n' \
-           + 'DISK Used Space: ' + str(res[1]) + 'B\n' \
-           + 'DISK Used Percentage: ' + str(res[3])
-
-
-# def get_status():
-#     # CPU information
-#     cpu_temp = get_cpu_temp()
-#     cpu_usage = get_cpu_usage()
-#
-#     # RAM information
-#
-#     ram_stats = get_ram_info()
-#     ram_total = round(int(ram_stats[0]) / 1000, 1)
-#     ram_used = round(int(ram_stats[1]) / 1000, 1)
-#     ram_free = round(int(ram_stats[2]) / 1000, 1)
-#
-#     # Disk information
-#     disk_stats = get_disk_usage()
-#     disk_total = disk_stats[0]
-#     disk_used = disk_stats[1]
-#     disk_scale = disk_stats[3]
-#
-#     print('CPU Temperature: ' + cpu_temp)
-#     print('CPU Usage: ' + cpu_usage)
-#     print('')
-#     print('RAM Total: ' + str(ram_total) + ' MB')
-#     print('RAM Used: ' + str(ram_used) + ' MB')
-#     print('RAM Free: ' + str(ram_free) + ' MB')
-#     print('')
-#     print('DISK Total Space: ' + str(disk_total) + 'B')
-#     print('DISK Used Space: ' + str(disk_used) + 'B')
-#     print('DISK Used Percentage: ' + str(disk_scale))
+    # Outputs are in B
+    # return 'DISK Total Space: ' + str(disk_list[0]) + 'B\n' \
+    #        + 'DISK Used Space: ' + str(disk_list[1]) + 'B\n' \
+    #        + 'DISK Used Percentage: ' + str(disk_list[3])
+    return disk_list
 
 
 if __name__ == '__main__':
     print("SYSTEM STATUS")
-    print(get_cpu_temp())
-    print(get_cpu_usage())
-    print()
-    print(get_ram_info())
-    print()
-    print(get_disk_usage())
+    print("CPU Temperature: ")
+    print(get_cpu_temp() + "'C")
+
+    print("CPU Usage: ")
+    print(get_cpu_usage() + "%")
+
+    ram_info = get_ram_info()
+    ram_total = str(round(int(ram_info[0]) / 1024, 1))
+    ram_used = str(round(int(ram_info[1]) / 1024, 1))
+    ram_free = str(round(int(ram_info[2]) / 1024, 1))
+    print('RAM Total: ' + ram_total + ' MB')
+    print('RAM Used: ' + ram_used + ' MB')
+    print('RAM Free: ' + ram_free + ' MB')
+
+    disk_info = get_disk_info()
+    disk_total = disk_info[0]
+    disk_used = disk_info[1]
+    disk_free = disk_info[2]
+    disk_ptg = disk_info[3]
+    print('Disk Total: ' + disk_total + 'B')
+    print('Disk Used: ' + disk_used + 'B')
+    print('Disk Free: ' + disk_free + 'B')
+    print('Disk Usage: ' + disk_ptg + '%')
