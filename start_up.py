@@ -10,10 +10,12 @@ def main():
         draw.rectangle(device.bounding_box, fill="black", outline="white")
         draw.text((10, 10), "Raspberry Pi", fill="white")
         draw.text((10, 30), "Start Up Completed", fill="white")
-    time.sleep(15)
-    with canvas(device) as draw:
-        draw.rectangle(device.bounding_box, fill="white")
-    time.sleep(5)
+    time.sleep(10)
+    while True:
+        with canvas(device) as draw:
+            draw.rectangle(device.bounding_box, fill="white")
+        time.sleep(5)
+
     # while True:
     #     cpu_temp = status.get_cpu_temp()
     #     cpu_usage = status.get_cpu_usage()
