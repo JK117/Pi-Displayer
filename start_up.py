@@ -15,6 +15,7 @@ def main():
         with canvas(device) as draw:
             draw.rectangle(device.bounding_box, fill="white")
         time.sleep(5)
+        time.sleep(5)
 
     # while True:
     #     cpu_temp = status.get_cpu_temp()
