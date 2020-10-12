@@ -50,29 +50,24 @@ def main():
     ]
 
     pixel_font_list = [
-        "/fonts/C&C_Red_Alert_INET.ttf",
-        "/fonts/",
-        "/fonts/",
-        "/fonts/",
-        "/fonts/",
-        "/fonts/",
-        "/fonts/",
-        "/fonts/",
-        "/fonts/",
+        "tiny.ttf",
+        "C&C_Red_Alert_INET.ttf",
+        "fontawesome-webfont.ttf",
+        "FreePixel.ttf",
+        "pixelmix.ttf",
+        "Volter__28Goldfish_29.ttf",
+        "ProggyTiny.ttf",
+        "code2000.ttf",
+        "ChiKareGo.ttf",
+        "miscfs_.ttf"
     ]
 
-    font = ImageFont.truetype("/fonts/FreePixel.ttf", 10)
-    with canvas(device) as draw:
-        draw.rectangle(device.bounding_box, fill="black", outline="white")
-        draw.text((10, 10), "This is FreePixel", fill="white", font=font)
-    time.sleep(5)
-
-    # for i in range(len(font_list)):
-    #     font = ImageFont.truetype(font_list[i], 10)
-    #     with canvas(device) as draw:
-    #         draw.rectangle(device.bounding_box, fill="black", outline="white")
-    #         draw.text((10, 10), str(i) + ". This is " + font_list[i], fill="white", font=font)
-    #     time.sleep(1)
+    for i in range(len(pixel_font_list)):
+        font = ImageFont.truetype(pixel_font_list[i], 10)
+        with canvas(device) as draw:
+            draw.rectangle(device.bounding_box, fill="black", outline="white")
+            draw.text((10, 10), str(i) + ". This is " + pixel_font_list[i], fill="white", font=font)
+        time.sleep(2)
 
 
 if __name__ == "__main__":
