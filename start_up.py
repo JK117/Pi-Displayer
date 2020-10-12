@@ -8,12 +8,13 @@ import status
 
 def main():
     with canvas(device) as draw:
-        font = ImageFont.truetype("FreePixel.ttf", 10)
+        free_pixel = ImageFont.truetype("FreePixel.ttf")
+        code_2000 = ImageFont.truetype("code2000.ttf")
         draw.rectangle(device.bounding_box, fill="black", outline="white")
         draw.text((10, 5), "Raspberry Pi", fill="white")
-        draw.text((10, 15), "Start Up Completed", fill="white")
-        draw.text((10, 25), "Raspberry Pi", fill="white", font=font)
-        draw.text((10, 35), "Start Up Completed", fill="white", font=font)
+        # draw.text((10, 15), "Start Up Completed", fill="white")
+        draw.text((10, 15), "Raspberry Pi", fill="white", font=free_pixel)
+        draw.text((10, 25), "Raspberry Pi", fill="white", font=code_2000)
     time.sleep(10)
     for i in range(5):
         with canvas(device) as draw:
