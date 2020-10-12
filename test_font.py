@@ -49,11 +49,11 @@ def main():
         "LiberationSerif-Bold.ttf"
     ]
 
-    for font_name in font_list:
-        font = ImageFont.truetype(font_name, 8)
+    for i in range(len(font_list)):
+        font = ImageFont.truetype(font_list[i], 10)
         with canvas(device) as draw:
             draw.rectangle(device.bounding_box, fill="black", outline="white")
-            draw.text((10, 10), "This is DejavuSansMono", fill="white", font=font)
+            draw.text((10, 10), str(i) + "This is DejavuSansMono", fill="white", font=font)
         time.sleep(1)
 
 
