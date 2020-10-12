@@ -30,7 +30,7 @@ except ImportError:
 BITSTAMP_PUSHER_KEY = 'de504dc5763aeef9ff52'
 
 font_path = os.path.abspath(os.path.join(os.path.dirname(__file__),
-                            'fonts', 'C&C Red Alert [INET].ttf'))
+                            'fonts', 'C&C_Red_Alert_INET.ttf'))
 font = ImageFont.truetype(font_path, 12)
 
 rows = []
