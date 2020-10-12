@@ -61,10 +61,10 @@ def main():
         "/fonts/",
     ]
 
-    font = ImageFont.truetype("/fonts/C&C_Red_Alert_INET.ttf", 10)
+    font = ImageFont.truetype("/fonts/FreePixel.ttf", 10)
     with canvas(device) as draw:
         draw.rectangle(device.bounding_box, fill="black", outline="white")
-        draw.text((10, 10), "This is C&C Red Alert", fill="white", font=font)
+        draw.text((10, 10), "This is FreePixel", fill="white", font=font)
     time.sleep(5)
 
     # for i in range(len(font_list)):
