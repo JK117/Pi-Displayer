@@ -7,54 +7,72 @@ import time
 
 def main():
     font_list = [
-        "DejaVuSerif-Bold.ttf",
+        # "DejaVuSerif-Bold.ttf",
         "DejaVuSansMono.ttf",
-        "PibotoCondensed-Bold.ttf",
-        "LiberationMono-Bold.ttf",
+        # "PibotoCondensed-Bold.ttf",
+        # "LiberationMono-Bold.ttf",
         "DejaVuSans.ttf",
-        "LiberationSans-BoldItalic.ttf",
-        "Quicksand-Light.ttf",
-        "PibotoLtItalic.ttf",
+        # "LiberationSans-BoldItalic.ttf",
+        # "Quicksand-Light.ttf",
+        # "PibotoLtItalic.ttf",
         "LiberationSans-Bold.ttf",
-        "LiberationMono-Italic.ttf",
-        "PibotoCondensed-BoldItalic.ttf",
+        # "LiberationMono-Italic.ttf",
+        # "PibotoCondensed-BoldItalic.ttf",
         "LiberationMono-Regular.ttf",
-        "LiberationMono-BoldItalic.ttf",
-        "LiberationSerif-BoldItalic.ttf",
-        "LiberationSerif-Italic.ttf",
+        # "LiberationMono-BoldItalic.ttf",
+        # "LiberationSerif-BoldItalic.ttf",
+        # "LiberationSerif-Italic.ttf",
         "DejaVuSans-Bold.ttf",
-        "PibotoLtBold.ttf",
-        "Piboto-ThinItalic.ttf",
-        "LiberationSans-Regular.ttf",
-        "Piboto-Italic.ttf",
+        # "PibotoLtBold.ttf",
+        # "Piboto-ThinItalic.ttf",
+        # "LiberationSans-Regular.ttf",
+        # "Piboto-Italic.ttf",
         "Piboto-Regular.ttf",
-        "DroidSansFallbackFull.ttf",
-        "LiberationSans-Italic.ttf",
-        "PibotoLt-Regular.ttf",
-        "Quicksand-Bold.ttf",
+        # "DroidSansFallbackFull.ttf",
+        # "LiberationSans-Italic.ttf",
+        # "PibotoLt-Regular.ttf",
+        # "Quicksand-Bold.ttf",
         "DejaVuSansMono-Bold.ttf",
-        "LiberationSerif-Regular.ttf",
-        "Piboto-LightItalic.ttf",
+        # "LiberationSerif-Regular.ttf",
+        # "Piboto-LightItalic.ttf",
         "Piboto-Light.ttf",
-        "PibotoLtBoldItalic.ttf",
-        "Quicksand-Regular.ttf",
-        "PibotoCondensed-Regular.ttf",
-        "Piboto-BoldItalic.ttf",
-        "Quicksand-Medium.ttf",
-        "NotoMono-Regular.ttf",
-        "Piboto-Bold.ttf",
-        "PibotoCondensed-Italic.ttf",
-        "DejaVuSerif.ttf",
-        "Piboto-Thin.ttf",
-        "LiberationSerif-Bold.ttf"
+        # "PibotoLtBoldItalic.ttf",
+        # "Quicksand-Regular.ttf",
+        # "PibotoCondensed-Regular.ttf",
+        # "Piboto-BoldItalic.ttf",
+        # "Quicksand-Medium.ttf",
+        # "NotoMono-Regular.ttf",
+        # "Piboto-Bold.ttf",
+        # "PibotoCondensed-Italic.ttf",
+        # "DejaVuSerif.ttf",
+        # "Piboto-Thin.ttf",
+        # "LiberationSerif-Bold.ttf"
     ]
 
-    for i in range(len(font_list)):
-        font = ImageFont.truetype(font_list[i], 10)
-        with canvas(device) as draw:
-            draw.rectangle(device.bounding_box, fill="black", outline="white")
-            draw.text((10, 10), str(i) + "This is DejavuSansMono", fill="white", font=font)
-        time.sleep(1)
+    pixel_font_list = [
+        "/fonts/C&C Red Alert [INET].ttf",
+        "/fonts/",
+        "/fonts/",
+        "/fonts/",
+        "/fonts/",
+        "/fonts/",
+        "/fonts/",
+        "/fonts/",
+        "/fonts/",
+    ]
+
+    font = ImageFont.truetype("/fonts/C&C Red Alert [INET].ttf", 10)
+    with canvas(device) as draw:
+        draw.rectangle(device.bounding_box, fill="black", outline="white")
+        draw.text((10, 10), "This is C&C Red Alert", fill="white", font=font)
+    time.sleep(1)
+
+    # for i in range(len(font_list)):
+    #     font = ImageFont.truetype(font_list[i], 10)
+    #     with canvas(device) as draw:
+    #         draw.rectangle(device.bounding_box, fill="black", outline="white")
+    #         draw.text((10, 10), str(i) + ". This is " + font_list[i], fill="white", font=font)
+    #     time.sleep(1)
 
 
 if __name__ == "__main__":
