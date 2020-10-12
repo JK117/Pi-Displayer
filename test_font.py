@@ -6,7 +6,7 @@ import time
 
 
 def main():
-    font_dejavu_sans_mono = ImageFont.truetype("DejaVuSansMono.ttf", 16)
+    font_dejavu_sans_mono = ImageFont.truetype("DejaVuSansMono.ttf", 8)
 
     with canvas(device) as draw:
         draw.rectangle(device.bounding_box, fill="black", outline="white")
