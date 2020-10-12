@@ -8,18 +8,18 @@ import status
 
 def main():
     with canvas(device) as draw:
-        free_pixel = ImageFont.truetype("FreePixel.ttf")
-        code_2000 = ImageFont.truetype("code2000.ttf")
+        free_pixel = ImageFont.truetype("FreePixel.ttf", 12)
+        code_2000 = ImageFont.truetype("code2000.ttf", 12)
         draw.rectangle(device.bounding_box, fill="black", outline="white")
         draw.text((10, 5), "Raspberry Pi", fill="white")
         # draw.text((10, 15), "Start Up Completed", fill="white")
         draw.text((10, 15), "Raspberry Pi", fill="white", font=free_pixel)
-        draw.text((10, 25), "Raspberry Pi", fill="white", font=code_2000)
-    time.sleep(10)
-    for i in range(5):
-        with canvas(device) as draw:
-            draw.rectangle(device.bounding_box, fill="white")
-        time.sleep(10)
+        draw.text((10, 30), "Raspberry Pi", fill="white", font=code_2000)
+    time.sleep(20)
+    # for i in range(5):
+    #     with canvas(device) as draw:
+    #         draw.rectangle(device.bounding_box, fill="white")
+    #     time.sleep(10)
 
     # while True:
     #     cpu_temp = status.get_cpu_temp()
