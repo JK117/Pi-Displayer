@@ -1,15 +1,19 @@
 from luma.core.interface.serial import spi
 from luma.core.render import canvas
 from luma.oled.device import sh1106
+from PIL import ImageFont
 import time
 import status
 
 
 def main():
     with canvas(device) as draw:
+        font = ImageFont.truetype("FreePixel.ttf", 10)
         draw.rectangle(device.bounding_box, fill="black", outline="white")
-        draw.text((10, 10), "Raspberry Pi", fill="white")
-        draw.text((10, 30), "Start Up Completed", fill="white")
+        draw.text((10, 5), "Raspberry Pi", fill="white")
+        draw.text((10, 15), "Start Up Completed", fill="white")
+        draw.text((10, 25), "Raspberry Pi", fill="white", font=font)
+        draw.text((10, 35), "Start Up Completed", fill="white", font=font)
     time.sleep(10)
     for i in range(5):
         with canvas(device) as draw:
