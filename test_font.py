@@ -4,51 +4,66 @@ from luma.oled.device import sh1106
 from PIL import ImageFont
 import time
 
+import platform
+import json
+import pwd
+import os
+import re
 
-def main():
+
+def display_sys_fonts():
     font_list = [
-        # "DejaVuSerif-Bold.ttf",
+        "DejaVuSerif-Bold.ttf",
         "DejaVuSansMono.ttf",
-        # "PibotoCondensed-Bold.ttf",
-        # "LiberationMono-Bold.ttf",
+        "PibotoCondensed-Bold.ttf",
+        "LiberationMono-Bold.ttf",
         "DejaVuSans.ttf",
-        # "LiberationSans-BoldItalic.ttf",
-        # "Quicksand-Light.ttf",
-        # "PibotoLtItalic.ttf",
+        "LiberationSans-BoldItalic.ttf",
+        "Quicksand-Light.ttf",
+        "PibotoLtItalic.ttf",
         "LiberationSans-Bold.ttf",
-        # "LiberationMono-Italic.ttf",
-        # "PibotoCondensed-BoldItalic.ttf",
+        "LiberationMono-Italic.ttf",
+        "PibotoCondensed-BoldItalic.ttf",
         "LiberationMono-Regular.ttf",
-        # "LiberationMono-BoldItalic.ttf",
-        # "LiberationSerif-BoldItalic.ttf",
-        # "LiberationSerif-Italic.ttf",
+        "LiberationMono-BoldItalic.ttf",
+        "LiberationSerif-BoldItalic.ttf",
+        "LiberationSerif-Italic.ttf",
         "DejaVuSans-Bold.ttf",
-        # "PibotoLtBold.ttf",
-        # "Piboto-ThinItalic.ttf",
-        # "LiberationSans-Regular.ttf",
-        # "Piboto-Italic.ttf",
+        "PibotoLtBold.ttf",
+        "Piboto-ThinItalic.ttf",
+        "LiberationSans-Regular.ttf",
+        "Piboto-Italic.ttf",
         "Piboto-Regular.ttf",
-        # "DroidSansFallbackFull.ttf",
-        # "LiberationSans-Italic.ttf",
-        # "PibotoLt-Regular.ttf",
-        # "Quicksand-Bold.ttf",
+        "DroidSansFallbackFull.ttf",
+        "LiberationSans-Italic.ttf",
+        "PibotoLt-Regular.ttf",
+        "Quicksand-Bold.ttf",
         "DejaVuSansMono-Bold.ttf",
-        # "LiberationSerif-Regular.ttf",
-        # "Piboto-LightItalic.ttf",
+        "LiberationSerif-Regular.ttf",
+        "Piboto-LightItalic.ttf",
         "Piboto-Light.ttf",
-        # "PibotoLtBoldItalic.ttf",
-        # "Quicksand-Regular.ttf",
-        # "PibotoCondensed-Regular.ttf",
-        # "Piboto-BoldItalic.ttf",
-        # "Quicksand-Medium.ttf",
-        # "NotoMono-Regular.ttf",
-        # "Piboto-Bold.ttf",
-        # "PibotoCondensed-Italic.ttf",
-        # "DejaVuSerif.ttf",
-        # "Piboto-Thin.ttf",
-        # "LiberationSerif-Bold.ttf"
+        "PibotoLtBoldItalic.ttf",
+        "Quicksand-Regular.ttf",
+        "PibotoCondensed-Regular.ttf",
+        "Piboto-BoldItalic.ttf",
+        "Quicksand-Medium.ttf",
+        "NotoMono-Regular.ttf",
+        "Piboto-Bold.ttf",
+        "PibotoCondensed-Italic.ttf",
+        "DejaVuSerif.ttf",
+        "Piboto-Thin.ttf",
+        "LiberationSerif-Bold.ttf"
     ]
 
+    for i in range(len(font_list)):
+        font = ImageFont.truetype(font_list[i], 15)
+        with canvas(device) as draw:
+            draw.rectangle(device.bounding_box, fill="black", outline="white")
+            draw.text((10, 5), str(i) + ". " + font_list[i], fill="white", font=font)
+        time.sleep(2)
+
+
+def display_pixel_fonts():
     pixel_font_list = [
         "tiny.ttf",
         "C&C_Red_Alert_INET.ttf",
@@ -62,12 +77,6 @@ def main():
         "miscfs_.ttf"
     ]
 
-    # for i in range(len(pixel_font_list)):
-    #     font = ImageFont.truetype(pixel_font_list[i], 10)
-    #     with canvas(device) as draw:
-    #         draw.rectangle(device.bounding_box, fill="black", outline="white")
-    #         draw.text((10, 10), str(i) + ". This is " + pixel_font_list[i], fill="white", font=font)
-    #     time.sleep(2)
     font_0 = ImageFont.truetype(pixel_font_list[0], 15)
     font_1 = ImageFont.truetype(pixel_font_list[1], 15)
     font_2 = ImageFont.truetype(pixel_font_list[2], 15)
@@ -104,10 +113,55 @@ def main():
         time.sleep(5)
 
 
+def get_sys():
+    return platform.system()
+
+
+def dfs_fonts_dir(path, receiver):
+    for item in os.listdir(path):
+        if '.uuid' not in item:
+            if re.search(r'.ttf', item):
+                name = item.split('.')[0]
+                receiver[name] = item
+            new_path = path + '/' + item
+            if os.path.isdir(new_path):
+                dfs_fonts_dir(new_path, receiver)
+
+
+def get_fonts(is_pixel=False):
+    sys = get_sys()
+    fonts_dir = ''
+    fonts = {}
+    if sys == 'Darwin':
+        fonts_dir = "/Users/" + pwd.getpwuid(os.getuid())[0] + "/Library/Fonts"
+    elif sys == 'Linux':
+        if is_pixel:
+            fonts_dir = "/usr/share/fonts/truetype/pixel"
+        else:
+            fonts_dir = "/usr/share/fonts/truetype"
+    dfs_fonts_dir(fonts_dir, fonts)
+    return fonts
+
+
+def roll(fonts_dict, device_obj, text=''):
+    for font_name, font_file in fonts_dict.items():
+        font_small = ImageFont.truetype(font_file, 10)
+        font_medium = ImageFont.truetype(font_file, 15)
+        font_large = ImageFont.truetype(font_file, 20)
+        with canvas(device_obj) as draw:
+            draw.rectangle(device.bounding_box, fill="black", outline="white")
+            draw.text((10, 5), font_name, fill="white", font=font_small)
+            draw.text((10, 15), font_name, fill="white", font=font_medium)
+            draw.text((10, 30), font_name, fill="white", font=font_large)
+        time.sleep(2)
+
+
 if __name__ == "__main__":
     try:
         serial = spi(device=0, port=0, cs_high=True)
         device = sh1106(serial)
-        main()
+        fonts = get_fonts()
+        roll(fonts, device)
+
     except KeyboardInterrupt:
         pass
