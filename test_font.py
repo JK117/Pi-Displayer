@@ -164,11 +164,11 @@ def print_transistor_font():
     time.sleep(5)
     with canvas(device) as draw:
         draw.rectangle(device.bounding_box, fill="black", outline="white")
-        draw.text((10, 5), "TRANSISTOR", fill="white", font=font)
+        draw.text((10, 5), "Transistor", fill="white", font=font)
     time.sleep(5)
     with canvas(device) as draw:
         draw.rectangle(device.bounding_box, fill="black", outline="white")
-        draw.text((10, 5), "TRANSISTOR", fill="white", font=font)
+        draw.text((10, 5), "0123456789", fill="white", font=font)
     time.sleep(5)
 
 
