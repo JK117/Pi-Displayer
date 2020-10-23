@@ -157,12 +157,18 @@ def roll(fonts_dict, device_obj, text=''):
 
 
 def print_transistor_font():
-    font = ImageFont.truetype("TRANSIST.ttf", 15)
+    font = ImageFont.truetype("TRANSIST.ttf", 20)
     with canvas(device) as draw:
         draw.rectangle(device.bounding_box, fill="black", outline="white")
         draw.text((10, 5), "TRANSISTOR", fill="white", font=font)
-        draw.text((10, 20), "Transistor", fill="white", font=font)
-        draw.text((10, 35), "0123456789", fill="white", font=font)
+    time.sleep(5)
+    with canvas(device) as draw:
+        draw.rectangle(device.bounding_box, fill="black", outline="white")
+        draw.text((10, 5), "TRANSISTOR", fill="white", font=font)
+    time.sleep(5)
+    with canvas(device) as draw:
+        draw.rectangle(device.bounding_box, fill="black", outline="white")
+        draw.text((10, 5), "TRANSISTOR", fill="white", font=font)
     time.sleep(5)
 
 
