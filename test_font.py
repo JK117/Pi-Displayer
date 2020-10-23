@@ -156,12 +156,23 @@ def roll(fonts_dict, device_obj, text=''):
         time.sleep(2)
 
 
+def print_transistor_font():
+    font = ImageFont.truetype("TRANSIST.ttf", 15)
+    with canvas(device) as draw:
+        draw.rectangle(device.bounding_box, fill="black", outline="white")
+        draw.text((10, 5), "TRANSISTOR", fill="white", font=font)
+        draw.text((10, 20), "Transistor", fill="white", font=font)
+        draw.text((10, 35), "0123456789", fill="white", font=font)
+    time.sleep(5)
+
+
 if __name__ == "__main__":
     try:
         serial = spi(device=0, port=0, cs_high=True)
         device = sh1106(serial)
-        fonts = get_fonts()
-        roll(fonts, device)
+        # fonts = get_fonts()
+        # roll(fonts, device)
+        print_transistor_font()
 
     except KeyboardInterrupt:
         pass
