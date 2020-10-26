@@ -157,15 +157,11 @@ def roll(fonts_dict, device_obj, text=''):
 
 
 def print_digifaw_font():
-    font = ImageFont.truetype("digifaw.ttf", 16)
+    font = ImageFont.truetype("digifaw.ttf", 10)
     with canvas(device) as draw:
         draw.rectangle(device.bounding_box, fill="black", outline="white")
         draw.text((10, 5), "digifaw", fill="white", font=font)
         draw.text((10, 20), "0123456789", fill="white", font=font)
-    time.sleep(5)
-    with canvas(device) as draw:
-        draw.rectangle(device.bounding_box, fill="black", outline="white")
-        draw.text((10, 5), "0123456789", fill="white", font=font)
     time.sleep(5)
 
 
