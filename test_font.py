@@ -156,15 +156,12 @@ def roll(fonts_dict, device_obj, text=''):
         time.sleep(2)
 
 
-def print_transistor_font():
-    font = ImageFont.truetype("TRANSIST.ttf", 20)
+def print_digifaw_font():
+    font = ImageFont.truetype("digifaw.ttf", 16)
     with canvas(device) as draw:
         draw.rectangle(device.bounding_box, fill="black", outline="white")
-        draw.text((10, 5), "TRANSISTOR", fill="white", font=font)
-    time.sleep(5)
-    with canvas(device) as draw:
-        draw.rectangle(device.bounding_box, fill="black", outline="white")
-        draw.text((10, 5), "Transistor", fill="white", font=font)
+        draw.text((10, 5), "digifaw", fill="white", font=font)
+        draw.text((10, 20), "0123456789", fill="white", font=font)
     time.sleep(5)
     with canvas(device) as draw:
         draw.rectangle(device.bounding_box, fill="black", outline="white")
@@ -178,7 +175,7 @@ if __name__ == "__main__":
         device = sh1106(serial)
         # fonts = get_fonts()
         # roll(fonts, device)
-        print_transistor_font()
+        print_digifaw_font()
 
     except KeyboardInterrupt:
         pass
