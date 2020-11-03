@@ -55,12 +55,33 @@ def display_sys_fonts():
         "LiberationSerif-Bold.ttf"
     ]
 
-    for i in range(len(font_list)):
-        font = ImageFont.truetype(font_list[i], 15)
+    div, mod = divmod(len(font_list), 3)
+    for i in range(div):
+        font_1 = ImageFont.truetype(font_list[i*3], 15)
+        font_2 = ImageFont.truetype(font_list[i*3+1], 15)
+        font_3 = ImageFont.truetype(font_list[i*3+2], 15)
         with canvas(device) as draw:
             draw.rectangle(device.bounding_box, fill="black", outline="white")
-            draw.text((10, 5), str(i) + ". " + font_list[i], fill="white", font=font)
-        time.sleep(2)
+            draw.text((10, 5), font_list[i], fill="white", font=font_1)
+            draw.text((10, 20), font_list[i+1], fill="white", font=font_2)
+            draw.text((10, 35), font_list[i+2], fill="white", font=font_3)
+        time.sleep(5)
+
+    if mod == 1:
+        font_1 = ImageFont.truetype(font_list[-1], 15)
+        with canvas(device) as draw:
+            draw.rectangle(device.bounding_box, fill="black", outline="white")
+            draw.text((10, 5), font_list[-1], fill="white", font=font_1)
+        time.sleep(5)
+
+    if mod == 2:
+        font_1 = ImageFont.truetype(font_list[-2], 15)
+        font_2 = ImageFont.truetype(font_list[-1], 15)
+        with canvas(device) as draw:
+            draw.rectangle(device.bounding_box, fill="black", outline="white")
+            draw.text((10, 5), font_list[-2], fill="white", font=font_1)
+            draw.text((10, 20), font_list[-1], fill="white", font=font_2)
+        time.sleep(5)
 
 
 def display_pixel_fonts():
@@ -113,8 +134,10 @@ def display_pixel_fonts():
         time.sleep(5)
 
 
-def get_sys():
-    return platform.system()
+def display_candidate_fonts():
+    free_pixel = ImageFont.truetype("FreePixel.ttf", 15)
+    proggy_tiny = ImageFont.truetype("ProggyTiny.ttf", 15)
+    code_2000 = ImageFont.truetype("code2000.ttf", 15)
 
 
 def dfs_fonts_dir(path, receiver):
@@ -162,7 +185,7 @@ if __name__ == "__main__":
         device = sh1106(serial)
         # fonts = get_fonts()
         # roll(fonts, device)
-        display_pixel_fonts()
+        display_sys_fonts()
 
     except KeyboardInterrupt:
         pass
