@@ -62,16 +62,16 @@ def display_sys_fonts():
         font_3 = ImageFont.truetype(font_list[i*3+2], 15)
         with canvas(device) as draw:
             draw.rectangle(device.bounding_box, fill="black", outline="white")
-            draw.text((10, 5), font_list[i], fill="white", font=font_1)
-            draw.text((10, 20), font_list[i+1], fill="white", font=font_2)
-            draw.text((10, 35), font_list[i+2], fill="white", font=font_3)
+            draw.text((10, 5), str(i*3) + '. ' + font_list[i*3], fill="white", font=font_1)
+            draw.text((10, 20), str(i*3+1) + '. ' + font_list[i*3+1], fill="white", font=font_2)
+            draw.text((10, 35), str(i*3+2) + '. ' + font_list[i*3+2], fill="white", font=font_3)
         time.sleep(5)
 
     if mod == 1:
         font_1 = ImageFont.truetype(font_list[-1], 15)
         with canvas(device) as draw:
             draw.rectangle(device.bounding_box, fill="black", outline="white")
-            draw.text((10, 5), font_list[-1], fill="white", font=font_1)
+            draw.text((10, 5), str(len(font_list) - 1) + font_list[-1], fill="white", font=font_1)
         time.sleep(5)
 
     if mod == 2:
@@ -79,8 +79,8 @@ def display_sys_fonts():
         font_2 = ImageFont.truetype(font_list[-1], 15)
         with canvas(device) as draw:
             draw.rectangle(device.bounding_box, fill="black", outline="white")
-            draw.text((10, 5), font_list[-2], fill="white", font=font_1)
-            draw.text((10, 20), font_list[-1], fill="white", font=font_2)
+            draw.text((10, 5), str(len(font_list) - 2) + font_list[-2], fill="white", font=font_1)
+            draw.text((10, 20), str(len(font_list) - 1) + font_list[-1], fill="white", font=font_2)
         time.sleep(5)
 
 
