@@ -129,7 +129,7 @@ def dfs_fonts_dir(path, receiver):
 
 
 def get_fonts(is_pixel=False):
-    sys = get_sys()
+    sys = platform.system()
     fonts_dir = ''
     fonts = {}
     if sys == 'Darwin':
@@ -160,8 +160,9 @@ if __name__ == "__main__":
     try:
         serial = spi(device=0, port=0, cs_high=True)
         device = sh1106(serial)
-        fonts = get_fonts()
-        roll(fonts, device)
+        # fonts = get_fonts()
+        # roll(fonts, device)
+        display_pixel_fonts()
 
     except KeyboardInterrupt:
         pass
