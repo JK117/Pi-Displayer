@@ -167,34 +167,34 @@ def display_candidate_fonts():
         with canvas(device) as draw:
             draw.rectangle(device.bounding_box, fill="black", outline="white")
             draw.text((10, 5), "LiberationMono-Regular", fill="white", font=liberation_mono_regular)
-            draw.text((10, 35), "LiberationSans-Bold", fill="white", font=liberation_sans_bold)
-            draw.text((10, 5), "LiberationSerif-Bold", fill="white", font=liberation_serif_bold)
+            draw.text((10, 20), "LiberationSans-Bold", fill="white", font=liberation_sans_bold)
+            draw.text((10, 35), "LiberationSerif-Bold", fill="white", font=liberation_serif_bold)
         time.sleep(5)
         with canvas(device) as draw:
             draw.rectangle(device.bounding_box, fill="black", outline="white")
-            draw.text((10, 20), "DejaVuSans", fill="white", font=dejavu_sans)
+            draw.text((10, 5), "DejaVuSans", fill="white", font=dejavu_sans)
             draw.text((10, 20), "DejaVuSans-Bold", fill="white", font=dejavu_sans_bold)
-            draw.text((10, 5), "DejaVuSansMono", fill="white", font=dejavu_sans_mono)
+            draw.text((10, 35), "DejaVuSansMono", fill="white", font=dejavu_sans_mono)
 
         time.sleep(5)
         with canvas(device) as draw:
             draw.rectangle(device.bounding_box, fill="black", outline="white")
-            draw.text((10, 35), "DejaVuSansMono-Bold", fill="white", font=dejavu_sans_mono_bold)
+            draw.text((10, 5), "DejaVuSansMono-Bold", fill="white", font=dejavu_sans_mono_bold)
             draw.text((10, 20), "Quicksand-Regular", fill="white", font=quick_sand_regular)
-            draw.text((10, 20), "Quicksand-Bold", fill="white", font=quick_sand_bold)
+            draw.text((10, 35), "Quicksand-Bold", fill="white", font=quick_sand_bold)
 
         time.sleep(5)
         with canvas(device) as draw:
             draw.rectangle(device.bounding_box, fill="black", outline="white")
             draw.text((10, 5), "Piboto-Thin", fill="white", font=piboto_thin)
-            draw.text((10, 35), "Piboto-Bold", fill="white", font=piboto_bold)
-            draw.text((10, 5), "Piboto-Light", fill="white", font=piboto_lt)
+            draw.text((10, 20), "Piboto-Bold", fill="white", font=piboto_bold)
+            draw.text((10, 35), "Piboto-Light", fill="white", font=piboto_lt)
 
         time.sleep(5)
         with canvas(device) as draw:
             draw.rectangle(device.bounding_box, fill="black", outline="white")
             draw.text((10, 5), "PibotoLt-Regular", fill="white", font=piboto_lt_regular)
-            draw.text((10, 35), "PibotoLtBold", fill="white", font=piboto_lt_bold)
+            draw.text((10, 20), "PibotoLtBold", fill="white", font=piboto_lt_bold)
         time.sleep(5)
 
 
