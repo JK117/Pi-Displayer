@@ -71,7 +71,7 @@ def display_sys_fonts():
         font_1 = ImageFont.truetype(font_list[-1], 15)
         with canvas(device) as draw:
             draw.rectangle(device.bounding_box, fill="black", outline="white")
-            draw.text((10, 5), str(len(font_list) - 1) + font_list[-1], fill="white", font=font_1)
+            draw.text((10, 5), str(len(font_list) - 1) + '. ' + font_list[-1], fill="white", font=font_1)
         time.sleep(5)
 
     if mod == 2:
@@ -79,8 +79,8 @@ def display_sys_fonts():
         font_2 = ImageFont.truetype(font_list[-1], 15)
         with canvas(device) as draw:
             draw.rectangle(device.bounding_box, fill="black", outline="white")
-            draw.text((10, 5), str(len(font_list) - 2) + font_list[-2], fill="white", font=font_1)
-            draw.text((10, 20), str(len(font_list) - 1) + font_list[-1], fill="white", font=font_2)
+            draw.text((10, 5), str(len(font_list) - 2) + '. ' + font_list[-2], fill="white", font=font_1)
+            draw.text((10, 20), str(len(font_list) - 1) + '. ' + font_list[-1], fill="white", font=font_2)
         time.sleep(5)
 
 
@@ -139,6 +139,64 @@ def display_candidate_fonts():
     proggy_tiny = ImageFont.truetype("ProggyTiny.ttf", 15)
     code_2000 = ImageFont.truetype("code2000.ttf", 15)
 
+    liberation_mono_regular = ImageFont.truetype("LiberationMono-Regular.ttf", 15)
+    liberation_sans_bold = ImageFont.truetype("LiberationSans-Bold.ttf", 15)
+    liberation_serif_bold = ImageFont.truetype("LiberationSerif-Bold.ttf", 15)
+
+    dejavu_sans = ImageFont.truetype("DejaVuSans.ttf", 15)
+    dejavu_sans_bold = ImageFont.truetype("DejaVuSans-Bold.ttf", 15)
+    dejavu_sans_mono = ImageFont.truetype("DejaVuSansMono.ttf", 15)
+    dejavu_sans_mono_bold = ImageFont.truetype("DejaVuSansMono-Bold.ttf", 15)
+
+    quick_sand_regular = ImageFont.truetype("Quicksand-Regular.ttf", 15)
+    quick_sand_bold = ImageFont.truetype("Quicksand-Bold.ttf", 15)
+
+    piboto_thin = ImageFont.truetype("Piboto-Thin.ttf", 15)
+    piboto_bold = ImageFont.truetype("Piboto-Bold.ttf", 15)
+    piboto_lt = ImageFont.truetype("Piboto-Light.ttf", 15)
+    piboto_lt_regular = ImageFont.truetype("PibotoLt-Regular.ttf", 15)
+    piboto_lt_bold = ImageFont.truetype("PibotoLtBold.ttf", 15)
+
+    while True:
+        with canvas(device) as draw:
+            draw.rectangle(device.bounding_box, fill="black", outline="white")
+            draw.text((10, 5), "FreePixel", fill="white", font=free_pixel)
+            draw.text((10, 20), "ProggyTiny", fill="white", font=proggy_tiny)
+            draw.text((10, 35), "code2000", fill="white", font=code_2000)
+        time.sleep(5)
+        with canvas(device) as draw:
+            draw.rectangle(device.bounding_box, fill="black", outline="white")
+            draw.text((10, 5), "LiberationMono-Regular", fill="white", font=liberation_mono_regular)
+            draw.text((10, 35), "LiberationSans-Bold", fill="white", font=liberation_sans_bold)
+            draw.text((10, 5), "LiberationSerif-Bold", fill="white", font=liberation_serif_bold)
+        time.sleep(5)
+        with canvas(device) as draw:
+            draw.rectangle(device.bounding_box, fill="black", outline="white")
+            draw.text((10, 20), "DejaVuSans", fill="white", font=dejavu_sans)
+            draw.text((10, 20), "DejaVuSans-Bold", fill="white", font=dejavu_sans_bold)
+            draw.text((10, 5), "DejaVuSansMono", fill="white", font=dejavu_sans_mono)
+
+        time.sleep(5)
+        with canvas(device) as draw:
+            draw.rectangle(device.bounding_box, fill="black", outline="white")
+            draw.text((10, 35), "DejaVuSansMono-Bold", fill="white", font=dejavu_sans_mono_bold)
+            draw.text((10, 20), "Quicksand-Regular", fill="white", font=quick_sand_regular)
+            draw.text((10, 20), "Quicksand-Bold", fill="white", font=quick_sand_bold)
+
+        time.sleep(5)
+        with canvas(device) as draw:
+            draw.rectangle(device.bounding_box, fill="black", outline="white")
+            draw.text((10, 5), "Piboto-Thin", fill="white", font=piboto_thin)
+            draw.text((10, 35), "Piboto-Bold", fill="white", font=piboto_bold)
+            draw.text((10, 5), "Piboto-Light", fill="white", font=piboto_lt)
+
+        time.sleep(5)
+        with canvas(device) as draw:
+            draw.rectangle(device.bounding_box, fill="black", outline="white")
+            draw.text((10, 5), "PibotoLt-Regular", fill="white", font=piboto_lt_regular)
+            draw.text((10, 35), "PibotoLtBold", fill="white", font=piboto_lt_bold)
+        time.sleep(5)
+
 
 def dfs_fonts_dir(path, receiver):
     for item in os.listdir(path):
@@ -185,7 +243,8 @@ if __name__ == "__main__":
         device = sh1106(serial)
         # fonts = get_fonts()
         # roll(fonts, device)
-        display_sys_fonts()
+        # display_sys_fonts()
+        display_candidate_fonts()
 
     except KeyboardInterrupt:
         pass
