@@ -18,16 +18,17 @@ def start_up(device):
 
 
 def display_time(device):
+    quick_sand_bold_large = ImageFont.truetype("Quicksand-Bold.ttf", 30)
+    quick_sand_bold_small = ImageFont.truetype("Quicksand-Bold.ttf", 15)
     for i in range(300):
+        dt = datetime.datetime.now()
+        dt_date = dt.strftime('%Y-%m-%d')
+        dt_time = dt.strftime('%H:%M:%S')
+        dt_day = dt.strftime('%a')
         with canvas(device) as draw:
-            dt = datetime.datetime.now()
-            dt_date = dt.strftime('%Y-%m-%d')
-            dt_time = dt.strftime('%H:%M:%S')
-            dt_day = dt.strftime('%a')
             draw.rectangle(device.bounding_box, fill="black", outline="white")
-            draw.text((10, 5), dt_date, fill="white")
-            draw.text((10, 15), dt_time, fill="white")
-            draw.text((10, 25), dt_day, fill="white")
+            draw.text((15, 10), dt_time, fill="white", font=quick_sand_bold_large)
+            draw.text((10, 45), dt_date + '  ' + dt_day, fill="white", font=quick_sand_bold_small)
         time.sleep(1)
 
 
