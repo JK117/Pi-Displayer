@@ -27,8 +27,8 @@ def display_time(device):
         dt_day = dt.strftime('%a')
         with canvas(device) as draw:
             draw.rectangle(device.bounding_box, fill="black", outline="white")
-            draw.text((10, 5), dt_time, fill="white", font=quick_sand_bold_large)
-            draw.text((10, 40), dt_date + '  ' + dt_day, fill="white", font=quick_sand_bold_small)
+            draw.text((5, 5), dt_time, fill="white", font=quick_sand_bold_large)
+            draw.text((5, 40), dt_date + '   ' + dt_day, fill="white", font=quick_sand_bold_small)
         time.sleep(0.5)
 
 
