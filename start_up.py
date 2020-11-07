@@ -20,7 +20,8 @@ def start_up(device):
 def display_time(device):
     quick_sand_bold_large = ImageFont.truetype("Quicksand-Bold.ttf", 30)
     quick_sand_bold_small = ImageFont.truetype("Quicksand-Bold.ttf", 15)
-    for i in range(300):
+    # for i in range(300):
+    while True:
         dt = datetime.datetime.now()
         dt_date = dt.strftime('%Y-%m-%d')
         dt_time = dt.strftime('%H:%M:%S')
