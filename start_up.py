@@ -52,7 +52,9 @@ if __name__ == "__main__":
     try:
         serial = spi(device=0, port=0, cs_high=True)
         spi_device = sh1106(serial)
-        start_up(spi_device)
+        print(spi_device.height)
+        print(spi_device.width)
+        # start_up(spi_device)
         # display_time(spi_device)
     except KeyboardInterrupt:
         pass
