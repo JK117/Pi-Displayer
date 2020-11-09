@@ -14,6 +14,8 @@ https://github.com/adafruit/Adafruit_Python_SSD1306/blob/master/examples/shapes.
 import time
 import datetime
 from demo_opts import get_device
+from luma.core.interface.serial import spi
+from luma.oled.device import sh1106
 from luma.core.render import canvas
 
 
@@ -51,7 +53,7 @@ def primitives(device, draw):
 
 
 def main():
-    device = get_device()
+    # device = get_device()
 
     print("Testing basic canvas graphics...")
     for _ in range(2):
@@ -96,6 +98,8 @@ def main():
 
 if __name__ == "__main__":
     try:
+        serial = spi(device=0, port=0, cs_high=True)
+        device = sh1106(serial)
         main()
     except KeyboardInterrupt:
         pass
