@@ -54,6 +54,7 @@ if __name__ == "__main__":
         spi_device = sh1106(serial)
         print(spi_device.height)
         print(spi_device.width)
+        print(spi_device.mode)
         # start_up(spi_device)
         # display_time(spi_device)
     except KeyboardInterrupt:
