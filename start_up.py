@@ -1,6 +1,6 @@
 from luma.core.interface.serial import spi
 from luma.core.render import canvas
-from luma.oled.device import sh1106
+from luma.oled.device import sh1106, ssd1306
 
 from PIL import ImageFont
 
@@ -51,7 +51,7 @@ def status_info(device):
 if __name__ == "__main__":
     try:
         serial = spi(device=0, port=0, cs_high=True)
-        spi_device = sh1106(serial)
+        spi_device = ssd1306(serial)
         print(spi_device.height)
         print(spi_device.width)
         print(spi_device.mode)
