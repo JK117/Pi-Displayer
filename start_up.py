@@ -18,30 +18,19 @@ def start_up(device):
 
 
 def display_time(device):
-    quick_sand_bold_large = ImageFont.truetype("Quicksand-Bold.ttf", 30)
+    quick_sand_bold_large = ImageFont.truetype("Quicksand-Bold.ttf", 25)
     quick_sand_bold_small = ImageFont.truetype("Quicksand-Bold.ttf", 15)
 
     while True:
-        for i in range(10):
-            dt = datetime.datetime.now()
-            dt_date = dt.strftime('%Y-%m-%d')
-            dt_time = dt.strftime('%H:%M:%S')
-            dt_day = dt.strftime('%a')
-            with canvas(device) as draw:
-                draw.rectangle(device.bounding_box, fill="black", outline="white")
-                draw.text((5, 5), dt_time, fill="white", font=quick_sand_bold_large)
-                draw.text((5, 40), dt_date + '   ' + dt_day, fill="white", font=quick_sand_bold_small)
-            time.sleep(0.5)
-        # for i in range(10):
-        #     dt = datetime.datetime.now()
-        #     dt_date = dt.strftime('%Y-%m-%d')
-        #     dt_time = dt.strftime('%H:%M:%S')
-        #     dt_day = dt.strftime('%a')
-        #     with canvas(device) as draw:
-        #         draw.rectangle(device.bounding_box, fill="black", outline="white")
-        #         draw.text((5, 5), dt_time, fill="white", font=quick_sand_bold_large)
-        #         draw.text((5, 40), dt_date + '   ' + dt_day, fill="white", font=quick_sand_bold_small)
-        #     time.sleep(0.5)
+        dt = datetime.datetime.now()
+        dt_date = dt.strftime('%Y-%m-%d')
+        dt_time = dt.strftime('%H:%M:%S')
+        dt_day = dt.strftime('%a')
+        with canvas(device) as draw:
+            draw.rectangle(device.bounding_box, fill="black", outline="white")
+            draw.text((5, 5), dt_time, fill="white", font=quick_sand_bold_large)
+            draw.text((5, 40), dt_date + '   ' + dt_day, fill="white", font=quick_sand_bold_small)
+        time.sleep(0.5)
 
 
 def status_info(device):
