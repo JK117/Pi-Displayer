@@ -55,8 +55,8 @@ if __name__ == "__main__":
         print(spi_device.height)
         print(spi_device.width)
         print(spi_device.mode)
-        # start_up(spi_device)
-        # display_time(spi_device)
+        start_up(spi_device)
+        display_time(spi_device)
     except KeyboardInterrupt:
         pass
 
