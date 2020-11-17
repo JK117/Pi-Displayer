@@ -13,7 +13,7 @@ def start_up(device):
     with canvas(device) as draw:
         draw.rectangle(device.bounding_box, fill="black", outline="white")
         draw.text((10, 5), "Raspberry Pi", fill="white")
-        draw.text((10, 15), "Start Up Completed", fill="white")
+        draw.text((10, 15), "start Up Completed", fill="white")
     time.sleep(5)
 
 
