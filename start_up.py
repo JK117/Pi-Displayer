@@ -60,8 +60,8 @@ def display_time(device):
 
     y_date = h - (h - h_0_l - h_0_s - 2) // 3 - 1 - h_0_s
 
-    # while True:
-    for i in range(20):
+    while True:
+        # for i in range(20):
         dt = datetime.datetime.now()
         # dt_time = dt.strftime('%H:%M:%S')
 
@@ -108,6 +108,6 @@ if __name__ == "__main__":
         # print(spi_device.width)
         # print(spi_device.mode)
         boot_up(spi_device)
-        # display_time(spi_device)
+        display_time(spi_device)
     except KeyboardInterrupt:
         pass
