@@ -10,7 +10,7 @@ import status
 
 
 def start_up(device):
-    font_large = ImageFont.truetype("Quicksand-Bold.ttf", 15)
+    font_large = ImageFont.truetype("Quicksand-Bold.ttf", 20)
     font_small = ImageFont.truetype("Quicksand-Bold.ttf", 5)
 
     h = device.height
@@ -27,8 +27,8 @@ def start_up(device):
 
     with canvas(device) as draw:
         draw.rectangle(device.bounding_box, fill="black", outline="white")
-        draw.text((x_title, y_title), boot_title, fill="white")
-        draw.text((x_status, y_status), boot_status, fill="white")
+        draw.text((x_title, y_title), boot_title, fill="white", font=font_large)
+        draw.text((x_status, y_status), boot_status, fill="white", font=font_small)
     time.sleep(5)
 
 
