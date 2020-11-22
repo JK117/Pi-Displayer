@@ -18,11 +18,18 @@ def start_up(device):
 
 
 def display_time(device):
-    h = device.height
-    w = device.width
-
     quick_sand_bold_large = ImageFont.truetype("Quicksand-Bold.ttf", 25)
     quick_sand_bold_small = ImageFont.truetype("Quicksand-Bold.ttf", 15)
+
+    dejavu_sans_mono_large = ImageFont.truetype("DejaVuSansMono.ttf", 25)
+    dejavu_sans_mono_small = ImageFont.truetype("DejaVuSansMono.ttf", 15)
+
+    h = device.height
+    w = device.width
+    w_0 = dejavu_sans_mono_large.getsize('0')
+    w_colon = dejavu_sans_mono_large.getsize(':')
+    print(w_0)
+    print(w_colon)
 
     # while True:
     for i in range(100):
@@ -31,15 +38,18 @@ def display_time(device):
         dt_date = dt.strftime('%Y-%m-%d')
         dt_day = dt.strftime('%a')
 
-        time_w, time_h = quick_sand_bold_large.getsize(dt_time)
-        print(w)
-        print(h)
-        print(time_w)
-        print(time_h)
+        dt_h = dt.strftime('%H')
+        dt_m = dt.strftime('%M')
+        dt_s = dt.strftime('%S')
+
+        print(dt_h)
+        print(dt_m)
+        print(dt_s)
+
         with canvas(device) as draw:
             draw.rectangle(device.bounding_box, fill="black", outline="white")
-            draw.text((5, 5), dt_time, fill="white", font=quick_sand_bold_large)
-            draw.text((5, 40), dt_date + '   ' + dt_day, fill="white", font=quick_sand_bold_small)
+            draw.text((5, 5), dt_time, fill="white", font=dejavu_sans_mono_large)
+            draw.text((5, 40), dt_date + '   ' + dt_day, fill="white", font=dejavu_sans_mono_small)
         time.sleep(0.1)
 
 
