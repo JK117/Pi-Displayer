@@ -26,10 +26,23 @@ def display_time(device):
 
     h = device.height
     w = device.width
-    w_0, h_0 = font_large.getsize('0')
-    w_colon, h_colon = font_large.getsize(':')
-    print(w_0)
-    print(w_colon)
+    w_0_l, h_0_l = font_large.getsize('0')
+    w_colon_l, h_colon_l = font_large.getsize(':')
+    w_0_s, h_0_s = font_small.getsize('0')
+    w_hyphen_s, h_hyphen_s = font_small.getsize('-')
+
+    x_h = w / 2 - w_0_l * 3 - w_colon_l
+    x_m = w / 2 - w_0_l
+    x_s = w / 2 + w_0_l + w_colon_l
+    x_colon_1 = w / 2 - w_0_l - w_colon_l
+    x_colon_2 = w / 2 + w_0_l
+
+    y_time = (h - h_0_l - h_0_s - 2) // 3 + 1
+
+    x_date = w / 2 - w_0_l * 3 - w_colon_l
+    x_day = w / 2 + w_0_l * 3 + w_colon_l - w_0_s * 3
+
+    y_date = h - (h - h_0_l - h_0_s - 2) // 3 - 1 - h_0_s
 
     # while True:
     for i in range(20):
@@ -42,21 +55,16 @@ def display_time(device):
         dt_m = dt.strftime('%M')
         dt_s = dt.strftime('%S')
 
-        p_h = w / 2 - w_0 * 3 - w_colon
-        p_m = w / 2 - w_0
-        p_s = w / 2 + w_0 + w_colon
-        p_colon_1 = w / 2 - w_0 - w_colon
-        p_colon_2 = w / 2 + w_0
-
         with canvas(device) as draw:
             draw.rectangle(device.bounding_box, fill="black", outline="white")
             # draw.text((5, 5), dt_time, fill="white", font=font_large)
-            draw.text((p_h, 5), dt_h, fill="white", font=font_large)
-            draw.text((p_m, 5), dt_m, fill="white", font=font_large)
-            draw.text((p_s, 5), dt_s, fill="white", font=font_large)
-            draw.text((p_colon_1, 5), ':', fill="white", font=font_large)
-            draw.text((p_colon_2, 5), ':', fill="white", font=font_large)
-            draw.text((5, 40), dt_date + '   ' + dt_day, fill="white", font=font_small)
+            draw.text((x_h, y_time), dt_h, fill="white", font=font_large)
+            draw.text((x_m, y_time), dt_m, fill="white", font=font_large)
+            draw.text((x_s, y_time), dt_s, fill="white", font=font_large)
+            draw.text((x_colon_1, y_time), ':', fill="white", font=font_large)
+            draw.text((x_colon_2, y_time), ':', fill="white", font=font_large)
+            draw.text((x_date, y_date), dt_date, fill="white", font=font_small)
+            draw.text((x_day, y_date), dt_day, fill="white", font=font_small)
         time.sleep(0.5)
 
 
