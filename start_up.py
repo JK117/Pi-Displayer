@@ -9,14 +9,14 @@ import datetime
 import status
 
 
-def start_up(device):
+def boot_up(device):
     font_large = ImageFont.truetype("Quicksand-Bold.ttf", 18)
-    font_small = ImageFont.truetype("Quicksand-Bold.ttf", 10)
+    font_small = ImageFont.truetype("Quicksand-Bold.ttf", 12)
 
     h = device.height
     w = device.width
     boot_title = "Raspberry Pi"
-    boot_status = "start Up Completed"
+    boot_status = "Boot Up Completed"
     w_title, h_title = font_large.getsize(boot_title)
     w_status, h_status = font_small.getsize(boot_status)
 
@@ -107,7 +107,7 @@ if __name__ == "__main__":
         # print(spi_device.height)
         # print(spi_device.width)
         # print(spi_device.mode)
-        start_up(spi_device)
+        boot_up(spi_device)
         # display_time(spi_device)
     except KeyboardInterrupt:
         pass
