@@ -10,8 +10,8 @@ import status
 
 
 def start_up(device):
-    font_large = ImageFont.truetype("Quicksand-Bold.ttf", 20)
-    font_small = ImageFont.truetype("Quicksand-Bold.ttf", 5)
+    font_large = ImageFont.truetype("Quicksand-Bold.ttf", 18)
+    font_small = ImageFont.truetype("Quicksand-Bold.ttf", 10)
 
     h = device.height
     w = device.width
