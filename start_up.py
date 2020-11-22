@@ -18,11 +18,11 @@ def start_up(device):
 
 
 def display_time(device):
-    quick_sand_bold_large = ImageFont.truetype("Quicksand-Bold.ttf", 25)
-    quick_sand_bold_small = ImageFont.truetype("Quicksand-Bold.ttf", 15)
+    # quick_sand_bold_large = ImageFont.truetype("Quicksand-Bold.ttf", 25)
+    # quick_sand_bold_small = ImageFont.truetype("Quicksand-Bold.ttf", 15)
 
-    dejavu_sans_mono_large = ImageFont.truetype("DejaVuSansMono.ttf", 25)
-    dejavu_sans_mono_small = ImageFont.truetype("DejaVuSansMono.ttf", 15)
+    dejavu_sans_mono_large = ImageFont.truetype("DejaVuSansMono.ttf", 20)
+    dejavu_sans_mono_small = ImageFont.truetype("DejaVuSansMono.ttf", 10)
 
     h = device.height
     w = device.width
@@ -32,7 +32,7 @@ def display_time(device):
     print(w_colon)
 
     # while True:
-    for i in range(100):
+    for i in range(20):
         dt = datetime.datetime.now()
         dt_time = dt.strftime('%H:%M:%S')
         dt_date = dt.strftime('%Y-%m-%d')
@@ -42,15 +42,22 @@ def display_time(device):
         dt_m = dt.strftime('%M')
         dt_s = dt.strftime('%S')
 
-        print(dt_h)
-        print(dt_m)
-        print(dt_s)
+        p_h = w / 2 - w_0 * 4
+        p_m = w / 2 - w_0
+        p_s = w / 2 + w_0 * 2
+        p_colon_1 = w / 2 - w_0 * 2
+        p_colon_2 = w / 2 + w_0
 
         with canvas(device) as draw:
             draw.rectangle(device.bounding_box, fill="black", outline="white")
-            draw.text((5, 5), dt_time, fill="white", font=dejavu_sans_mono_large)
+            # draw.text((5, 5), dt_time, fill="white", font=dejavu_sans_mono_large)
+            draw.text((p_h, 5), dt_h, fill="white", font=dejavu_sans_mono_large)
+            draw.text((p_m, 5), dt_m, fill="white", font=dejavu_sans_mono_large)
+            draw.text((p_s, 5), dt_s, fill="white", font=dejavu_sans_mono_large)
+            draw.text((p_colon_1, 5), ':', fill="white", font=dejavu_sans_mono_large)
+            draw.text((p_colon_2, 5), ':', fill="white", font=dejavu_sans_mono_large)
             draw.text((5, 40), dt_date + '   ' + dt_day, fill="white", font=dejavu_sans_mono_small)
-        time.sleep(0.1)
+        time.sleep(0.5)
 
 
 def status_info(device):
