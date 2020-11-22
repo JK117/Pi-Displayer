@@ -21,8 +21,8 @@ def display_time(device):
     # quick_sand_bold_large = ImageFont.truetype("Quicksand-Bold.ttf", 25)
     # quick_sand_bold_small = ImageFont.truetype("Quicksand-Bold.ttf", 15)
 
-    dejavu_sans_mono_large = ImageFont.truetype("DejaVuSansMono.ttf", 20)
-    dejavu_sans_mono_small = ImageFont.truetype("DejaVuSansMono.ttf", 10)
+    dejavu_sans_mono_large = ImageFont.truetype("DejaVuSansMono.ttf", 25)
+    dejavu_sans_mono_small = ImageFont.truetype("DejaVuSansMono.ttf", 15)
 
     h = device.height
     w = device.width
