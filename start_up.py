@@ -42,10 +42,10 @@ def display_time(device):
         dt_m = dt.strftime('%M')
         dt_s = dt.strftime('%S')
 
-        p_h = w / 2 - w_0 * 4
+        p_h = w / 2 - w_0 * 3 - w_colon
         p_m = w / 2 - w_0
-        p_s = w / 2 + w_0 * 2
-        p_colon_1 = w / 2 - w_0 * 2
+        p_s = w / 2 + w_0 + w_colon
+        p_colon_1 = w / 2 - w_0 - w_colon
         p_colon_2 = w / 2 + w_0
 
         with canvas(device) as draw:
