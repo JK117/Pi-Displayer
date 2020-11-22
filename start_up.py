@@ -26,8 +26,8 @@ def display_time(device):
 
     h = device.height
     w = device.width
-    w_0 = dejavu_sans_mono_large.getsize('0')
-    w_colon = dejavu_sans_mono_large.getsize(':')
+    w_0, h_0 = dejavu_sans_mono_large.getsize('0')
+    w_colon, h_colon = dejavu_sans_mono_large.getsize(':')
     print(w_0)
     print(w_colon)
 
