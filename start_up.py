@@ -18,16 +18,16 @@ def start_up(device):
 
 
 def display_time(device):
-    # quick_sand_bold_large = ImageFont.truetype("Quicksand-Bold.ttf", 25)
-    # quick_sand_bold_small = ImageFont.truetype("Quicksand-Bold.ttf", 15)
+    font_large = ImageFont.truetype("Quicksand-Bold.ttf", 25)
+    font_small = ImageFont.truetype("Quicksand-Bold.ttf", 15)
 
-    dejavu_sans_mono_large = ImageFont.truetype("DejaVuSansMono.ttf", 25)
-    dejavu_sans_mono_small = ImageFont.truetype("DejaVuSansMono.ttf", 15)
+    # font_large = ImageFont.truetype("DejaVuSansMono.ttf", 25)
+    # font_small = ImageFont.truetype("DejaVuSansMono.ttf", 15)
 
     h = device.height
     w = device.width
-    w_0, h_0 = dejavu_sans_mono_large.getsize('0')
-    w_colon, h_colon = dejavu_sans_mono_large.getsize(':')
+    w_0, h_0 = font_large.getsize('0')
+    w_colon, h_colon = font_large.getsize(':')
     print(w_0)
     print(w_colon)
 
@@ -50,13 +50,13 @@ def display_time(device):
 
         with canvas(device) as draw:
             draw.rectangle(device.bounding_box, fill="black", outline="white")
-            # draw.text((5, 5), dt_time, fill="white", font=dejavu_sans_mono_large)
-            draw.text((p_h, 5), dt_h, fill="white", font=dejavu_sans_mono_large)
-            draw.text((p_m, 5), dt_m, fill="white", font=dejavu_sans_mono_large)
-            draw.text((p_s, 5), dt_s, fill="white", font=dejavu_sans_mono_large)
-            draw.text((p_colon_1, 5), ':', fill="white", font=dejavu_sans_mono_large)
-            draw.text((p_colon_2, 5), ':', fill="white", font=dejavu_sans_mono_large)
-            draw.text((5, 40), dt_date + '   ' + dt_day, fill="white", font=dejavu_sans_mono_small)
+            # draw.text((5, 5), dt_time, fill="white", font=font_large)
+            draw.text((p_h, 5), dt_h, fill="white", font=font_large)
+            draw.text((p_m, 5), dt_m, fill="white", font=font_large)
+            draw.text((p_s, 5), dt_s, fill="white", font=font_large)
+            draw.text((p_colon_1, 5), ':', fill="white", font=font_large)
+            draw.text((p_colon_2, 5), ':', fill="white", font=font_large)
+            draw.text((5, 40), dt_date + '   ' + dt_day, fill="white", font=font_small)
         time.sleep(0.5)
 
 
