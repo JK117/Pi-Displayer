@@ -10,10 +10,25 @@ import status
 
 
 def start_up(device):
+    font_large = ImageFont.truetype("Quicksand-Bold.ttf", 25)
+    font_small = ImageFont.truetype("Quicksand-Bold.ttf", 15)
+
+    h = device.height
+    w = device.width
+    boot_title = "Raspberry Pi"
+    boot_status = "start Up Completed"
+    w_title, h_title = font_large.getsize(boot_title)
+    w_status, h_status = font_small.getsize(boot_status)
+
+    x_title = w / 2 - w_title / 2
+    y_title = (h - h_title - h_status - 2) // 3 + 1
+    x_status = w / 2 - w_status / 2
+    y_status = (h - h_title - h_status - 2) // 3 * 2 + 1 + h_title
+
     with canvas(device) as draw:
         draw.rectangle(device.bounding_box, fill="black", outline="white")
-        draw.text((10, 5), "Raspberry Pi", fill="white")
-        draw.text((10, 15), "start Up Completed", fill="white")
+        draw.text((x_title, y_title), boot_title, fill="white")
+        draw.text((x_status, y_status), boot_status, fill="white")
     time.sleep(5)
 
 
@@ -29,7 +44,7 @@ def display_time(device):
     w_0_l, h_0_l = font_large.getsize('0')
     w_colon_l, h_colon_l = font_large.getsize(':')
     w_0_s, h_0_s = font_small.getsize('0')
-    w_hyphen_s, h_hyphen_s = font_small.getsize('-')
+    # w_hyphen_s, h_hyphen_s = font_small.getsize('-')
 
     x_h = w / 2 - w_0_l * 3 - w_colon_l
     x_m = w / 2 - w_0_l
@@ -37,6 +52,7 @@ def display_time(device):
     x_colon_1 = w / 2 - w_0_l - w_colon_l
     x_colon_2 = w / 2 + w_0_l
 
+    # x_time = w / 2 - w_0_l * 4
     y_time = (h - h_0_l - h_0_s - 2) // 3 + 1
 
     x_date = w / 2 - w_0_l * 3 - w_colon_l
@@ -47,17 +63,18 @@ def display_time(device):
     # while True:
     for i in range(20):
         dt = datetime.datetime.now()
-        dt_time = dt.strftime('%H:%M:%S')
-        dt_date = dt.strftime('%Y-%m-%d')
-        dt_day = dt.strftime('%a')
+        # dt_time = dt.strftime('%H:%M:%S')
 
         dt_h = dt.strftime('%H')
         dt_m = dt.strftime('%M')
         dt_s = dt.strftime('%S')
 
+        dt_date = dt.strftime('%Y-%m-%d')
+        dt_day = dt.strftime('%a')
+
         with canvas(device) as draw:
             draw.rectangle(device.bounding_box, fill="black", outline="white")
-            # draw.text((5, 5), dt_time, fill="white", font=font_large)
+            # draw.text((x_time, y_time), dt_time, fill="white", font=font_large)
             draw.text((x_h, y_time), dt_h, fill="white", font=font_large)
             draw.text((x_m, y_time), dt_m, fill="white", font=font_large)
             draw.text((x_s, y_time), dt_s, fill="white", font=font_large)
@@ -65,7 +82,7 @@ def display_time(device):
             draw.text((x_colon_2, y_time), ':', fill="white", font=font_large)
             draw.text((x_date, y_date), dt_date, fill="white", font=font_small)
             draw.text((x_day, y_date), dt_day, fill="white", font=font_small)
-        time.sleep(0.5)
+        time.sleep(0.1)
 
 
 def status_info(device):
@@ -90,11 +107,7 @@ if __name__ == "__main__":
         # print(spi_device.height)
         # print(spi_device.width)
         # print(spi_device.mode)
-        # start_up(spi_device)
-        display_time(spi_device)
+        start_up(spi_device)
+        # display_time(spi_device)
     except KeyboardInterrupt:
         pass
-
-    # while True:
-
-
