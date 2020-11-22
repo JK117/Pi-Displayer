@@ -18,19 +18,29 @@ def start_up(device):
 
 
 def display_time(device):
+    h = device.height
+    w = device.width
+
     quick_sand_bold_large = ImageFont.truetype("Quicksand-Bold.ttf", 25)
     quick_sand_bold_small = ImageFont.truetype("Quicksand-Bold.ttf", 15)
 
-    while True:
+    # while True:
+    for i in range(100):
         dt = datetime.datetime.now()
-        dt_date = dt.strftime('%Y-%m-%d')
         dt_time = dt.strftime('%H:%M:%S')
+        dt_date = dt.strftime('%Y-%m-%d')
         dt_day = dt.strftime('%a')
+
+        time_w, time_h = quick_sand_bold_large.getsize(dt_time)
+        print(w)
+        print(h)
+        print(time_w)
+        print(time_h)
         with canvas(device) as draw:
             draw.rectangle(device.bounding_box, fill="black", outline="white")
             draw.text((5, 5), dt_time, fill="white", font=quick_sand_bold_large)
             draw.text((5, 40), dt_date + '   ' + dt_day, fill="white", font=quick_sand_bold_small)
-        time.sleep(0.5)
+        time.sleep(0.1)
 
 
 def status_info(device):
@@ -55,7 +65,7 @@ if __name__ == "__main__":
         # print(spi_device.height)
         # print(spi_device.width)
         # print(spi_device.mode)
-        start_up(spi_device)
+        # start_up(spi_device)
         display_time(spi_device)
     except KeyboardInterrupt:
         pass
