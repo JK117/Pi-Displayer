@@ -3,25 +3,25 @@
 # from threading import *
 # sys.path.append('D:\\works\\TestFile')
 # print(sys.path)
-from EventManager import *
+from em.EventManager import *
 
 # 事件名称  新文章
 EVENT_ARTICLE = "Event_Article"
 
 
-# 事件源 公众号
-class PublicAccounts:
-    def __init__(self, event_manager):
-        self.__eventManager = event_manager
-
-    def write_new_article(self):
-        # 事件对象，写了新文章
-        event = Event(type_=EVENT_ARTICLE)
-        event.dict["article"] = u'如何写出更优雅的代码\n'
-
-        # 发送事件
-        self.__eventManager.send_event(event)
-        print(u'公众号发送新文章\n')
+# # 事件源 公众号
+# class PublicAccounts:
+#     def __init__(self, event_manager):
+#         self.__eventManager = event_manager
+#
+#     def write_new_article(self):
+#         # 事件对象，写了新文章
+#         event = Event(type_=EVENT_ARTICLE)
+#         event.dict["article"] = u'如何写出更优雅的代码\n'
+#
+#         # 发送事件
+#         self.__eventManager.send_event(event)
+#         print(u'公众号发送新文章\n')
 
 
 # 监听器 订阅者
@@ -35,7 +35,7 @@ class Listener:
         print(u'正在阅读新文章内容：%s' % event.dict["article"])
 
 
-def test():
+def start_listener():
     # 实例化监听器
     listener1 = Listener("JK")
     listener2 = Listener("CY")
@@ -48,10 +48,10 @@ def test():
     # 启动事件管理器,# 启动事件处理线程
     event_manager.start()
 
-    public_acc = PublicAccounts(event_manager)
-    timer = Timer(2, public_acc.write_new_article)
-    timer.start()
+    # public_acc = PublicAccounts(event_manager)
+    # timer = Timer(2, public_acc.write_new_article)
+    # timer.start()
 
 
 if __name__ == '__main__':
-    test()
+    start_listener()
