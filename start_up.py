@@ -18,11 +18,11 @@ def start_up(device):
 
 
 def display_time(device):
-    font_large = ImageFont.truetype("Quicksand-Bold.ttf", 25)
-    # font_small = ImageFont.truetype("Quicksand-Bold.ttf", 15)
+    # font_large = ImageFont.truetype("Quicksand-Bold.ttf", 25)
+    font_small = ImageFont.truetype("Quicksand-Bold.ttf", 15)
 
-    # font_large = ImageFont.truetype("DejaVuSansMono.ttf", 22)
-    font_small = ImageFont.truetype("DejaVuSansMono.ttf", 12)
+    font_large = ImageFont.truetype("DejaVuSansMono.ttf", 22)
+    # font_small = ImageFont.truetype("DejaVuSansMono.ttf", 12)
 
     h = device.height
     w = device.width
