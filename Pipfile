@@ -6,9 +6,9 @@ verify_ssl = true
 [dev-packages]
 
 [packages]
-luma-core = "*"
-luma-oled = "*"
-luma = "*"
+luma = "==2.1.0"
+luma-core = "==2.2.0"
+luma-oled = "==3.8.1"
 pusherclient = "*"
 
 [requires]
