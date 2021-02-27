@@ -60,7 +60,7 @@ def display_time(device):
 
     y_date = h - (h - h_0_l - h_0_s - 2) // 3 - 1 - h_0_s
 
-    host_name = ip_info.get_hostname()
+    # host_name = ip_info.get_hostname()
     local_ip = ip_info.get_local_ip()
 
     while True:
@@ -85,7 +85,7 @@ def display_time(device):
             draw.text((x_colon_2, y_time), ':', fill="white", font=font_large)
             # draw.text((x_date, y_date), dt_date, fill="white", font=font_small)
             # draw.text((x_day, y_date), dt_day, fill="white", font=font_small)
-            draw.text((x_date, y_date), host_name+': '+local_ip, fill="white", font=font_small)
+            draw.text((x_date, y_date), 'IP: '+local_ip, fill="white", font=font_small)
         time.sleep(0.1)
 
 
