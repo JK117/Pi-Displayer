@@ -85,7 +85,7 @@ def display_time(device):
             draw.text((x_colon_2, y_time), ':', fill="white", font=font_large)
             # draw.text((x_date, y_date), dt_date, fill="white", font=font_small)
             # draw.text((x_day, y_date), dt_day, fill="white", font=font_small)
-            draw.text((x_date, y_date), 'IP: '+local_ip, fill="white", font=font_small)
+            draw.text((x_date, y_date), local_ip, fill="white", font=font_small)
         time.sleep(0.1)
 
 
